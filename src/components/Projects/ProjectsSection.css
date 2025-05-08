@@ -1,0 +1,213 @@
+.projects-section {
+  padding: 2rem;
+  padding-top: 32px;
+  background: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects-heading {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  animation: fadeIn 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  opacity: 0;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 85px;
+  width: 100%;
+  max-width: 720px;
+  transition: all 0.5s ease-in-out;
+}
+
+.glass {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  background: linear-gradient(var(--project-card), transparent);
+  border: 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 24px var(--accent-color), 0 4px 12px var(--accent-color), inset 0 0 12px var(--accent-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), margin 0.4s ease, opacity 1s ease, filter 0.3s ease;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transform: rotate(calc(var(--r) * 1deg));
+  opacity: 0;
+  animation: fadeInScale 1.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: var(--delay);
+}
+
+.row .glass:not(:first-child) {
+  margin-left: -105px;
+}
+
+.row:hover .glass {
+  transform: rotate(0deg) scale(1.08) !important;
+  margin-left: 30px;
+  filter: brightness(1.12);
+}
+
+.glass::before {
+  content: attr(data-text);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: var(--bottom-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  border-radius: 0 0 12px 12px;
+  transition: background 0.4s ease;
+}
+
+.glass svg {
+  font-size: 2.5em;
+  transition: transform 0.4s ease;
+}
+
+.card-content {
+  text-align: center;
+  color: var(--text-color);
+  padding: 1rem;
+}
+
+.card-content h3 {
+  margin-bottom: 0.5rem;
+  font-size: 2.2rem;
+}
+
+.code-icon-link {
+  position: absolute;
+  left: 10px;
+  top: 70%;
+  transform: translateY(-50%);
+  color: var(--text-color);
+  font-size: 0.5rem;
+  text-decoration: none;
+  border: 1px solid var(--text-color);
+  border-radius: 50%;
+  padding: 0.3rem;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.code-icon-link:hover {
+  background: var(--modal-bg);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.technologies .tech {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: rotate(calc(var(--r) * 1deg)) scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(calc(var(--r) * 1deg)) scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-heading {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+  }
+
+  .row {
+    margin-bottom: 60px;
+    max-width: 100%;
+  }
+
+  .glass {
+    width: 180px;
+    height: 180px;
+    margin-left: -80px;
+  }
+
+  .row:hover .glass {
+    margin-left: 20px;
+  }
+
+  .glass::before {
+    font-size: 0.5rem;
+    height: 35px;
+  }
+
+  .code-icon-link {
+    left: 5px;
+    top: 75%;
+    font-size: 0.6rem;
+    padding: 0.2rem;
+  }
+
+  .glass svg {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-heading {
+    font-size: 1.8rem;
+  }
+
+  .glass {
+    width: 160px;
+    height: 160px;
+    margin-left: -60px;
+  }
+
+  .row:hover .glass {
+    margin-left: 15px;
+  }
+
+  .code-icon-link {
+    font-size: 0.5rem;
+    padding: 0.15rem;
+  }
+
+  .glass svg {
+    font-size: 1.8em;
+  }
+}
